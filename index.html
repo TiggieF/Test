@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>US Stocks Live Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="app-header">
+    <h1>Top U.S. Stocks</h1>
+    <div class="last-updated">
+      Last updated: <span id="last-updated">--</span>
+    </div>
+  </header>
+  <main class="layout">
+    <aside class="stock-list" aria-label="Stock list">
+      <h2>Watchlist</h2>
+      <ul id="stock-items" role="list"></ul>
+    </aside>
+    <section class="stock-overview" aria-live="polite">
+      <header class="overview-header">
+        <div>
+          <h2 id="stock-name">Select a stock</h2>
+          <p id="stock-symbol" class="symbol"></p>
+        </div>
+        <div class="price-block">
+          <p id="stock-price" class="price">--</p>
+          <p id="stock-change" class="change neutral">--</p>
+        </div>
+      </header>
+      <div class="chart-wrapper">
+        <canvas id="price-chart" aria-label="Intraday price chart" role="img"></canvas>
+      </div>
+    </section>
+    <aside class="stock-details" aria-label="Stock details">
+      <h2>Snapshot</h2>
+      <dl>
+        <div>
+          <dt>Open</dt>
+          <dd id="detail-open">--</dd>
+        </div>
+        <div>
+          <dt>High</dt>
+          <dd id="detail-high">--</dd>
+        </div>
+        <div>
+          <dt>Low</dt>
+          <dd id="detail-low">--</dd>
+        </div>
+        <div>
+          <dt>Change</dt>
+          <dd id="detail-change">--</dd>
+        </div>
+        <div>
+          <dt>Change %</dt>
+          <dd id="detail-change-percent">--</dd>
+        </div>
+        <div>
+          <dt>Volume</dt>
+          <dd id="detail-volume">--</dd>
+        </div>
+      </dl>
+    </aside>
+  </main>
+  <footer class="app-footer">
+    <p>Data is simulated for demonstration purposes.</p>
+  </footer>
+</body>
+</html>
