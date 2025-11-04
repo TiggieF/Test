@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
-  <script src="script.js" defer></script>
+  <script type="module" src="script.js"></script>
 </head>
 <body>
   <header class="app-header">
@@ -34,8 +34,26 @@
           <p id="stock-change" class="change neutral">--</p>
         </div>
       </header>
-      <div class="chart-wrapper">
-        <canvas id="price-chart" aria-label="Intraday price chart" role="img"></canvas>
+      <div class="overview-content">
+        <div class="overview-sidebar">
+          <nav id="section-nav" class="stock-nav" aria-label="Stock sections">
+            <ul></ul>
+          </nav>
+          <div id="section-content" class="section-content" aria-live="polite">
+            <p>Select a section to explore additional context for the highlighted stock.</p>
+          </div>
+        </div>
+        <div class="overview-main">
+          <div id="time-range-buttons" class="time-range-controls" role="group" aria-label="Select time range"></div>
+          <div class="chart-wrapper">
+            <canvas id="price-chart" aria-label="Interactive price chart" role="img"></canvas>
+          </div>
+          <div class="merkle-panel" aria-live="polite">
+            <h3>Price history integrity</h3>
+            <p id="merkle-status" class="status">Awaiting verification…</p>
+            <code id="merkle-root">--</code>
+          </div>
+        </div>
       </div>
     </section>
     <aside class="stock-details" aria-label="Stock details">
@@ -69,7 +87,7 @@
     </aside>
   </main>
   <footer class="app-footer">
-    <p>Data is simulated for demonstration purposes.</p>
+    <p>Data is simulated for demonstration purposes and verified with Merkle hashing for tamper detection.</p>
   </footer>
 </body>
 </html>
