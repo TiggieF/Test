@@ -1,0 +1,239 @@
+:root {
+  color-scheme: light dark;
+  --bg-color: #0f172a;
+  --panel-color: #111c39;
+  --text-color: #e2e8f0;
+  --muted-color: #94a3b8;
+  --accent-color: #38bdf8;
+  --positive-color: #22c55e;
+  --negative-color: #ef4444;
+  --neutral-color: #64748b;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, rgba(56, 189, 248, 0.15), transparent 50%), var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header,
+.app-footer {
+  padding: 1.5rem 2rem;
+  background-color: rgba(17, 28, 57, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.app-footer {
+  border-top: 1px solid rgba(148, 163, 184, 0.2);
+  border-bottom: 0;
+  margin-top: auto;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--muted-color);
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.75rem;
+}
+
+.last-updated {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: var(--muted-color);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr) 260px;
+  gap: 1.5rem;
+  padding: 1.5rem 2rem;
+  flex: 1;
+}
+
+.stock-list,
+.stock-details,
+.stock-overview {
+  background-color: rgba(17, 28, 57, 0.85);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  box-shadow: 0 25px 45px rgba(15, 23, 42, 0.25);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.stock-list h2,
+.stock-details h2 {
+  margin-top: 0;
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+}
+
+.stock-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.stock-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(15, 23, 42, 0.6);
+  padding: 0.75rem 0.85rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.15s ease, border 0.15s ease;
+  border: 1px solid transparent;
+}
+
+.stock-item:hover,
+.stock-item:focus {
+  transform: translateY(-1px);
+  background: rgba(56, 189, 248, 0.15);
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+.stock-item.selected {
+  background: rgba(56, 189, 248, 0.25);
+  border-color: rgba(56, 189, 248, 0.5);
+}
+
+.stock-item .symbol {
+  font-weight: 600;
+}
+
+.stock-item .price {
+  font-weight: 500;
+  color: var(--muted-color);
+}
+
+.stock-overview {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.overview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.overview-header h2 {
+  margin: 0;
+  font-size: 1.75rem;
+}
+
+.symbol {
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-color);
+  margin: 0.35rem 0 0;
+}
+
+.price-block {
+  text-align: right;
+}
+
+.price {
+  font-size: 2.25rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.change {
+  margin: 0.2rem 0 0;
+  font-weight: 500;
+}
+
+.change.positive {
+  color: var(--positive-color);
+}
+
+.change.negative {
+  color: var(--negative-color);
+}
+
+.change.neutral {
+  color: var(--neutral-color);
+}
+
+.chart-wrapper {
+  position: relative;
+  min-height: 320px;
+}
+
+.stock-details dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1rem 0 0;
+}
+
+.stock-details dt {
+  font-size: 0.9rem;
+  color: var(--muted-color);
+  margin-bottom: 0.35rem;
+}
+
+.stock-details dd {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+@media (max-width: 1200px) {
+  .layout {
+    grid-template-columns: 220px minmax(0, 1fr) 220px;
+  }
+}
+
+@media (max-width: 992px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .stock-list,
+  .stock-details {
+    order: 1;
+  }
+
+  .stock-overview {
+    order: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .app-header,
+  .app-footer,
+  .layout {
+    padding: 1rem;
+  }
+
+  .price {
+    font-size: 1.9rem;
+  }
+
+  .overview-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .price-block {
+    text-align: left;
+  }
+}
